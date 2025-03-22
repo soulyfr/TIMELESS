@@ -1,0 +1,26 @@
+{
+  "name": "timeless---copy",
+  "version": "1.0.0",
+  "main": "lettersets.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soulyfr/TIMELESS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soulyfr/TIMELESS/issues"
+  },
+  "homepage": "https://github.com/soulyfr/TIMELESS#readme",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^22.13.11",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^6.15.0"
+  }
+}

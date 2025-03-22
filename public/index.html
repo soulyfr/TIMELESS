@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="wordle.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="spellingbee.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/chomsky" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fjalla+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>TIMELESS</title>
+</head>
+<body>
+    <h1>TIMELESS</h1>
+    <div class="welcome">
+      <div class="welcome-box">
+        <p class="welcome-title">Welcome!</p>
+        <p class="welcome-message">Thanks for checking out my site!<br>This is a hobby project where you can play Wordle and Spelling Bee from the NYT games infinitely(on the official site you need a subscription).<br>More features coming soon...</p>
+        <div class="game-buttons">
+          <button class="wordle-button">WORDLE</button>
+          <button class="spelling-bee-button">SPELLING BEE</button>
+        </div>
+      </div>
+      <div class="high-scores-box">
+        <p class="high-scores-title">LEADERBOARD</p>
+        <div class="high-scores-list">
+          <div class="name-column">
+            <!-- <p class="list-item">NAME1</p>
+            <p class="list-item">NAME2</p> -->
+          </div>
+          <div class="score-column">
+            <!-- <p class="list-item">128</p>
+            <p class="list-item">112</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="games">
+    <div class="wordle">
+        <div class="wordle-box">
+          <div class="wordle-title"> <p>WORDLE</p></div>
+          <a href="https://www.nytimes.com/2023/08/01/crosswords/how-to-talk-about-wordle.html" target="_blank" class="howtoplay">HOW TO PLAY</a>
+        </div>
+      </div>
+      <div class="spelling-bee">
+        <div class="back-blur"></div>
+        <div class="current-score">SCORE: 0</div>
+        <div class="give-up">GIVE UP</div>
+        <div class="submit-box">
+          <p class="game-over">GAME OVER</p>
+          <p class="current-score">SCORE : 0</p>
+          <p>ENTER YOUR NAME THEN HIT ENTER OR ESC TO QUIT</p>
+          <input type="text" class="name-input" maxlength="15" oninput="this.value = this.value.toUpperCase()">
+        </div>
+        <div class="spelling-bee-title"> <p>SPELLING BEE</p></div>
+        <div class="spelling-bee-box">
+          <p class="alert-message">Test</p>
+          <div class="guess-display">
+            <p class="guess-line">GAMING</p>
+          </div>
+          <div class="bee-box">
+            <div class="bee-row">
+              <button class="letter"></button>
+              <button class="anchor letter"></button>
+              <button class="letter"></button>
+            </div>
+            <div class="bee-row">
+              <button class="letter"></button>
+              <button class="letter"></button>
+              <button class="letter"></button>
+              <button class="letter"></button>
+            </div>
+          </div>
+          <div class="edit-buttons">
+            <button class="edit-button erase">←</button>
+            <button class="edit-button shuffle">↺</button>
+            <button class="edit-button submit">✓</button>
+          </div>
+          <!-- <div class="score-box"></div> -->
+        </div>
+        <div class="corrects-box">
+          <p class="word-counter">YOU HAVE FOUND 0 WORDS</p>
+          <div class="corrects-list">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+<footer></footer>
+</body>
+<script type="module" src="wordle.js"></script>
+<script type="module" src="spellingbee.js"></script>
+</html>
+
+<!-- notes
+ADD SOME TYPE OF FEEDBACK FOR WINNING/LOSING IN WORDLE
+-->

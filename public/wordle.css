@@ -1,0 +1,105 @@
+.wordle {
+    height: 500px;
+    width: 100%;
+    /* position: absolute;
+    top: 225px; */
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    background-image: url('./wordle_bg.png');
+    background-size: cover;
+    box-shadow: inset 0 0 30px rgb(0, 0, 0);
+}
+
+.wordle-box {
+    position: relative;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* border-radius: 25px;
+    border-style: solid;
+    border-color: rgb(32, 32, 32); */
+
+    border-radius: 25px;
+    /* border-style: solid;
+    border-color: rgb(32, 32, 32); */
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.418);
+}
+
+.wordle-title {
+    position: absolute;
+    top: -100px;
+    font-family: 'Fjalla One';
+    font-weight: bold;
+    font-size: 35px;
+    color: rgb(231, 231, 231);
+
+    text-shadow: 2px 2px 5px rgb(84, 82, 82);
+}
+
+.wordle-row {
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.letter-box {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(56, 56, 56);
+    border-radius: 3px;
+    border-style: none;
+    text-align: center;
+    font-size: 30px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: rgb(231, 231, 231);
+    transition: background-color 0.15s;
+}
+
+.letter-box:focus {
+    background-color: rgb(87, 87, 87);
+    transition: 0.3s;
+}
+
+.howtoplay {
+    position: absolute;
+    height: 55px;
+    line-height: 55px;
+    width: 135px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    bottom: -80px;
+    background-color: rgb(36, 70, 36);
+    border-radius: 8px;
+    color: rgb(219, 218, 218);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.329);
+}
+
+.howtoplay:hover {
+    background-color: rgb(44, 99, 34);
+    color: rgb(231, 231, 231);
+    border-radius: 12px;
+}
+
+
+.green {
+    background-color: rgb(45, 185, 45);
+    transition: background-color 0.15s;
+}
+
+.yellow {
+    background-color: rgb(215, 200, 30);
+    transition: background-color 0.15s;
+}
+
+.red {
+    background-color: rgb(200, 25, 25);
+    transition: background-color 0.15s;
+}
