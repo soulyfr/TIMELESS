@@ -1,6 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
+const { readFileSync } = require('fs');
 const { readFile } = require('fs').promises;
 const path = require('path');
 
@@ -16,6 +17,19 @@ let db;
 const dbName = 'leaderboard';
 const collectionName = 'high_scores';
 
+const dictionary = new Set();
+
+try {
+    const data = readFileSync('words_dictionary.json', 'utf-8');
+    const rawDict = JSON.parse(data);
+    
+    Object.keys(rawDict).forEach(word => dictionary.add(word));
+
+
+} catch (error) {
+    console.error(error);
+}
+
 
 // app.get('/',  async (req, res) => {  
     
@@ -24,9 +38,9 @@ const collectionName = 'high_scores';
 
 connectDB();
 
-app.get('/dictionary', async (req, res) => {
-    res.sendFile(path.resolve(__dirname,  'words_dictionary.json'));
-});
+// app.get('/dictionary', async (req, res) => {
+//     res.sendFile(path.resolve(__dirname,  'words_dictionary.json'));
+// });
 
 app.get('/api/top-10', async (req, res) => {
     const collection = db.collection(collectionName);
@@ -40,6 +54,17 @@ app.get('/api/top-10', async (req, res) => {
     const scores = await collection.find({}, options).toArray();
     res.json(scores);
 });
+
+app.get('/api/validate-word', async (req, res) => {
+    const currentWord = req.query.word;
+
+    if(currentWord) {
+        const isValid = dictionary.has(currentWord.toLocaleLowerCase());
+        res.json({valid: isValid});
+    } else {
+        res.status(400).send('NO WORD TO VALIDATE');
+    }
+})
 
 app.post('/api/submit-score', async (req, res) => {
     console.log('TESTTESTTEST');

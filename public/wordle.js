@@ -17,11 +17,16 @@ for(let letter of word) {
 
 let prev = 0;
 
-const dict = await fetchData('/dictionary');
+
+buildBoard();
+
 
 gameButton.addEventListener('click', () => {
     window.scrollTo({top: document.querySelector('.wordle').offsetTop  - 150, behavior: 'smooth' });
 });
+
+
+//functions
 
 function buildBoard() {
     const board = document.querySelector('.wordle-box');
@@ -65,7 +70,7 @@ async function fetchData(link) {
     }
 }
 
-function getInput(inputEvent) {
+async function getInput(inputEvent) {
     const letterBox = inputEvent.target;
     const row = letterBox.parentElement;
     const col = parseInt(letterBox.getAttribute('letter-index'));
@@ -76,7 +81,7 @@ function getInput(inputEvent) {
     if (col < letterCount - 1) {
         row.children[col + 1].focus();
     } else {
-        checkGuess();
+        await checkGuess();
     }
 }
 
@@ -97,7 +102,7 @@ function backTrack (event){
     }
 }
 
-function checkGuess() {
+async function checkGuess() {
     const activeRow = document.querySelector(`[row-index="${currentRow}"]`);
     const allLetterBoxes = document.querySelectorAll('.letter-box');
 
@@ -110,7 +115,7 @@ function checkGuess() {
         return;
     }
 
-    const isInvalid = checkInvalid(currentGuess);
+    const isInvalid = await checkInvalid(currentGuess);
     if(isInvalid){
         for (const letterBox of activeRow.children) {
             letterBox.classList.add('red');
@@ -163,7 +168,8 @@ function checkGuess() {
     } 
     
     else if (currentRow === rowCount - 1) {
-        endGame(true);
+        endGame(false);
+        console.log(`The word was ${word}`);
     } 
     
     else {
@@ -173,10 +179,10 @@ function checkGuess() {
     }
 }
 
-function checkInvalid(word) {
-    if (dict[word] == 1) {
-        return false;
-    } else {return true;}
+async function checkInvalid(word) {
+    const res = await fetch(`/api/validate-word?word=${word.toLocaleLowerCase()}`);
+    const data = await res.json();
+    return !data.valid;
 }
 
 function nextRow() {
@@ -205,4 +211,3 @@ function endGame(isWin) {
     }
 }
 
-buildBoard();

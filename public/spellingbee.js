@@ -14,7 +14,7 @@ const alertMessage = document.querySelector('.alert-message');
 let correctWords = [];
 let currentScore = 0;
 
-const dict = await fetchData('/dictionary');
+// const dict = await fetchData('/dictionary');
 
 const allLetterBoxes = document.querySelectorAll('.letter:not(.anchor)');
 const anchorLetter = document.querySelector('.anchor.letter');
@@ -145,12 +145,13 @@ function setLetters(letters, anchor) {
     }
 }
 
-function checkWord() {
+async function checkWord() {
     const currentWord = guessBox.textContent.toLocaleLowerCase();
+    const isInvalid = await checkInvalid(currentWord);
 
-    if(checkInvalid(currentWord)) {
+    if(isInvalid) {
         showAlert('NOT A REAL WORD!');
-    } else if(!checkInvalid(currentWord)){
+    } else if(!isInvalid){
 
         if (correctWords.includes(currentWord.toLocaleUpperCase())) {
             showAlert('WORD ALREADY GUESSED!')
@@ -199,10 +200,10 @@ function listCorrects() {
     }
 }
 
-function checkInvalid(word) {
-    if (word.length > 1 && dict[word] == 1) {
-        return false;
-    } else {return true;}
+async function checkInvalid(word) {
+    const res = await fetch(`/api/validate-word?word=${word.toLocaleLowerCase()}`);
+    const data = await res.json();
+    return !data.valid;
 }
 
 function checkPangram(word) {
