@@ -30,17 +30,7 @@ try {
     console.error(error);
 }
 
-
-// app.get('/',  async (req, res) => {  
-    
-//     res.send( await readFile('./index.html', 'utf-8'));
-// });
-
 connectDB();
-
-// app.get('/dictionary', async (req, res) => {
-//     res.sendFile(path.resolve(__dirname,  'words_dictionary.json'));
-// });
 
 app.get('/api/top-10', async (req, res) => {
     const collection = db.collection(collectionName);
@@ -69,8 +59,7 @@ app.get('/api/validate-word', async (req, res) => {
 app.post('/api/submit-score', async (req, res) => {
     console.log('TESTTESTTEST');
     try {
-        // await client.connect();
-        // const db = client.db(dbName);
+        
         const collection = db.collection(collectionName);
         
         const {user, score} = req.body;
@@ -95,7 +84,7 @@ async function connectDB() {
     try {
         await client.connect();
         db = client.db(dbName);
-        console.log('connected..');
+        //console.log('connected..');
     } catch (error) {
         console.error('FAILED TO CONNECT TO DATABASE');
         process.exit(1);
