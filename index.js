@@ -57,7 +57,7 @@ app.get('/api/validate-word', async (req, res) => {
 })
 
 app.post('/api/submit-score', async (req, res) => {
-    console.log('TESTTESTTEST');
+
     try {
         
         const collection = db.collection(collectionName);
